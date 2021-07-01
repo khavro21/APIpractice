@@ -8,5 +8,6 @@ setup(
     license='MIT License',
     author='Khavro',
     author_email='dmytro@probely.com',
-    description='CreatingAPI'
+    description='CreatingAPI',
+    keywords=['python', 'api', 'probely', 'naointeressa']
 )
