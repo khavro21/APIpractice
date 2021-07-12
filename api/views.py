@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, serializers
 from .models import Pet
 from .serializers import PetSerializer
 from django.core.exceptions import ValidationError
@@ -25,11 +25,11 @@ class GetOnePet(generics.RetrieveUpdateDestroyAPIView):
         if pet.exists():
             return self.destroy(request, *args, **kwargs)
         else:
-            raise ValidationError('This pet was not created by you!')
+            raise serializers.ValidationError('This pet was not created by you!')
 
     def put(self, request, *args, **kwargs):
         pet = Pet.objects.filter(pk=kwargs['pk'], poster=self.request.user)
         if pet.exists():
             return self.destroy(request, *args, **kwargs)
         else:
-            raise ValidationError('This pet was not created by you!')
+            raise serializers.ValidationError('This pet was not created by you!')

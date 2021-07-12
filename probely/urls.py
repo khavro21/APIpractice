@@ -20,7 +20,9 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pet/', views.PetList.as_view()),
+    path('pet/', views.PetList.as_view(), name='pet-list'),
+    # path('pet/', include('rest_framework.urls'), name='user-list'),
     path('api-auth/', include('rest_framework.urls')),
     path('pet/<int:pk>', views.GetOnePet.as_view(), name='GetOnePet'),
 ]
+
