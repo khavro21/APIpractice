@@ -33,3 +33,7 @@ class GetOnePet(generics.RetrieveUpdateDestroyAPIView):
             return self.destroy(request, *args, **kwargs)
         else:
             raise serializers.ValidationError('This pet was not created by you!')
+
+
+def home(request):
+    return render(request, 'home.html')
